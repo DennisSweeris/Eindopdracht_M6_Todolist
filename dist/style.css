@@ -1,0 +1,200 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  text-align: center;
+}
+
+html {
+  font-size: 10px;
+  -ms-scrollbar-scrollbar-width: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f1aa4c;
+  background: linear-gradient(90deg, #f1aa4c 0%, rgba(255, 255, 255, 0.1) 50%, #f1aa4c 100%);
+}
+
+h1 {
+  margin: 2vh;
+  font-size: 8rem;
+  font-family: "Anton", sans-serif;
+  color: #fc8f00;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.input-container input {
+  z-index: 1;
+  font-size: 3em;
+  background-color: #ffffff;
+  color: #fc8f00;
+  width: 45rem;
+  padding: 1em;
+  border: 0.5rem solid #000000;
+  border-radius: 1rem 1rem 0 0;
+  transition: background-color 200ms ease-in;
+}
+.input-container input::-moz-placeholder {
+  color: #fc8f00;
+}
+.input-container input:-ms-input-placeholder {
+  color: #fc8f00;
+}
+.input-container input::placeholder {
+  color: #fc8f00;
+}
+
+input[type=text]:focus {
+  outline: none;
+}
+
+.select {
+  display: flex;
+  justify-content: space-between;
+  width: 45rem;
+}
+.select .date,
+.select .filter,
+.select .input-btn {
+  transform: translateY(-1px);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 1.5rem, 2rem);
+  padding: 1em;
+  color: #fc8f00;
+  border: 0.5rem solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+  transition: background-color 200ms ease-in;
+  cursor: pointer;
+}
+.select .filter,
+.select .input-btn {
+  cursor: pointer;
+}
+.select .filter:hover,
+.select .input-btn:hover {
+  background-color: #ffd297;
+}
+.select .filter:focus,
+.select .input-btn:focus {
+  outline: none;
+}
+.select .date {
+  border-radius: 0 0 0 1rem;
+  width: 40%;
+}
+.select .filter {
+  border-radius: 0 0 1rem 0;
+  width: 40%;
+}
+.select .input-btn {
+  flex-grow: 1;
+  border-radius: 0;
+  border: none;
+  border-bottom: 0.5rem solid #000000;
+  border-bottom: none;
+  background-color: transparent;
+}
+.select .input-btn:hover {
+  transform: scale(2);
+  background-color: transparent;
+}
+
+.todolist-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.todoitems {
+  width: 40rem;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  border: 0.5rem solid #000000;
+  border-top: none;
+  background-color: #ffffff;
+}
+.todoitems:first-child {
+  border-top: 0.5rem solid #000000;
+  border-radius: 1em 1em 0 0;
+}
+.todoitems:last-child {
+  border-radius: 0 0 1em 1em;
+  border-bottom: 0.5rem solid #000000;
+}
+.todoitems .item-input {
+  flex-grow: 1;
+  color: #fc8f00;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+}
+.todoitems .completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.todoitems .checkbox,
+.todoitems .edit-btn,
+.todoitems .trash-btn {
+  font-size: 2rem;
+  background: transparent;
+  color: #fc8f00;
+  border: none;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+}
+.todoitems .checkbox:hover,
+.todoitems .edit-btn:hover,
+.todoitems .trash-btn:hover {
+  transform: scale(1.5);
+}
+.todoitems .checkbox:focus,
+.todoitems .edit-btn:focus,
+.todoitems .trash-btn:focus {
+  outline: none;
+}
+.todoitems .checkbox {
+  margin: 0 1rem 0 0;
+}
+.todoitems .edit-todo {
+  text-decoration: underline;
+  color: #ffffff;
+}
+.todoitems .edit-todo:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .input-container input {
+    width: 50%;
+    font-size: clamp(1rem, 2rem, 3rem);
+  }
+
+  .select {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: stretch;
+  }
+  .select .filter,
+.select .date {
+    width: 100%;
+    border-radius: 0;
+  }
+}/*# sourceMappingURL=style.css.map */

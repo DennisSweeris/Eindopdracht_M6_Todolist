@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./dist/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/c7755ed50b.js" crossorigin="anonymous"></script>
+    <script defer type="text/javascript" src="./dist/api-client.js"></script>
+    <script defer type="text/javascript" src="./dist/script.js"></script>
+
+    <title>Todo List</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <span>Todo</span>
+        <span style="color: #000000">List</span>
+      </h1>
+    </header>
+
+    <div class="input-container">
+      <input class="input" type="text" placeholder="New todo..." />
+      <div class="select">
+        <span class="date"></span>
+        <button class="input-btn"><i class="fas fa-plus"></i></button>
+        <select name="todos" class="filter">
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="uncompleted">Uncompleted</option>
+        </select>
+      </div>
+    </div>
+    <div class="todolist-wrapper">
+      <div class="todolist"></div>
+    </div>
+  </body>
+</html>

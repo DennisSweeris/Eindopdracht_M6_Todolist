@@ -1,0 +1,192 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  text-align: center;
+}
+
+html {
+  font-size: 10px;
+  -ms-scrollbar-scrollbar-width: none;
+}
+
+// COLORS
+$backgroundcolor: #f1aa4c;
+$textcolor: #fc8f00;
+$inputcolor: #ffffff;
+$secondarycolor: #e4c651;
+$hovercolor: #ffd297;
+$bordercolor: #000000;
+$errorcolor: #b43333;
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $backgroundcolor;
+  background: linear-gradient(
+    90deg,
+    rgba(241, 170, 76, 1) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(241, 170, 76, 1) 100%
+  );
+}
+
+h1 {
+  margin: 2vh;
+  font-size: 8rem;
+  font-family: "Anton", sans-serif;
+  color: $textcolor;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  input {
+    z-index: 1;
+    font-size: 3em;
+    background-color: $inputcolor;
+    color: $textcolor;
+    width: 45rem;
+    padding: 1em;
+    border: 0.5rem solid $bordercolor;
+    border-radius: 1rem 1rem 0 0;
+    transition: background-color 200ms ease-in;
+    &::placeholder {
+      color: $textcolor;
+    }
+  }
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+.select {
+  display: flex;
+  justify-content: space-between;
+  width: 45rem;
+
+  .date,
+  .filter,
+  .input-btn {
+    transform: translateY(-1px); // weird styling fix
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1rem, 1.5rem, 2rem);
+    padding: 1em;
+    color: $textcolor;
+    border: 0.5rem solid $bordercolor;
+    border-top: none;
+    background-color: $inputcolor;
+    transition: background-color 200ms ease-in;
+    cursor: pointer;
+  }
+
+  .filter,
+  .input-btn {
+    &:hover {
+      background-color: $hovercolor;
+    }
+    &:focus {
+      outline: none;
+    }
+    cursor: pointer;
+  }
+
+  .date {
+    border-radius: 0 0 0 1rem;
+    width: 40%;
+  }
+
+  .filter {
+    border-radius: 0 0 1rem 0;
+    width: 40%;
+  }
+
+  .input-btn {
+    flex-grow: 1;
+    border-radius: 0;
+    border: none;
+    border-bottom: 0.5rem solid $bordercolor;
+    border-bottom: none;
+    background-color: transparent;
+    &:hover {
+      transform: scale(2);
+      background-color: transparent;
+    }
+  }
+}
+
+.todolist-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.todoitems {
+  width: 40rem;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  border: 0.5rem solid $bordercolor;
+  border-top: none;
+  background-color: $inputcolor;
+  &:first-child {
+    border-top: 0.5rem solid $bordercolor;
+    border-radius: 1em 1em 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 1em 1em;
+    border-bottom: 0.5rem solid $bordercolor;
+  }
+
+  .item-input {
+    flex-grow: 1;
+    color: $textcolor;
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .checkbox,
+  .edit-btn,
+  .trash-btn {
+    font-size: 2rem;
+    background: transparent;
+    color: $textcolor;
+    border: none;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+    &:hover {
+      transform: scale(1.5);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  .checkbox {
+    margin: 0 1rem 0 0;
+  }
+
+  .edit-todo {
+    text-decoration: underline;
+    color: $inputcolor;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@import "./media";
