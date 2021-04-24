@@ -6,13 +6,16 @@
     <link rel="stylesheet" type="text/css" href="./dist/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/c7755ed50b.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <script defer type="text/javascript" src="./dist/api-client.js"></script>
     <script defer type="text/javascript" src="./dist/script.js"></script>
 
     <title>Todo List</title>
   </head>
-  <body>
+  <body class="body">
     <header>
       <h1>
         <span>Todo</span>
@@ -23,7 +26,7 @@
     <div class="input-container">
       <input class="input" type="text" placeholder="New todo..." />
       <div class="select">
-        <span class="date"></span>
+        <div class="date"></div>
         <button class="input-btn"><i class="fas fa-plus"></i></button>
         <select name="todos" class="filter">
           <option value="all">All</option>
@@ -35,5 +38,19 @@
     <div class="todolist-wrapper">
       <div class="todolist"></div>
     </div>
+    <footer>
+      <ul>
+        <li>
+          <a href="https://linkedin.com/DennisSweeris" target="_blank" rel="noreferrer">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/DennisSweeris" target="_blank" rel="noreferrer">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+      </ul>
+    </footer>
   </body>
 </html>

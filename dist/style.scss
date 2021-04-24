@@ -31,9 +31,22 @@ body {
   background: linear-gradient(
     90deg,
     rgba(241, 170, 76, 1) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 1) 50%,
     rgba(241, 170, 76, 1) 100%
   );
+}
+
+// Scrollbar
+body::-webkit-scrollbar {
+  width: 2rem;
+  &-track {
+    background: rgba(241, 170, 76, 1);
+    background: linear-gradient(90deg, rgba(241, 170, 76, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  }
+  &-thumb {
+    background: rgba(241, 170, 76, 1);
+    background: linear-gradient(90deg, rgba(241, 170, 76, 1) 0%, rgba(252, 143, 0, 1) 100%);
+  }
 }
 
 h1 {
@@ -44,27 +57,37 @@ h1 {
 }
 
 .input-container {
+  position: sticky;
+  padding-bottom: 2vh;
+  top: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: $backgroundcolor;
+  background: linear-gradient(
+    90deg,
+    rgba(241, 170, 76, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(241, 170, 76, 1) 100%
+  );
+  z-index: 10;
   input {
-    z-index: 1;
+    background: none;
     font-size: 3em;
-    background-color: $inputcolor;
     color: $textcolor;
     width: 45rem;
     padding: 1em;
-    border: 0.5rem solid $bordercolor;
+    border: 0.25rem solid $bordercolor;
     border-radius: 1rem 1rem 0 0;
     transition: background-color 200ms ease-in;
     &::placeholder {
       color: $textcolor;
     }
+    &:focus {
+      outline: none;
+      background: rgba(0, 0, 0, 0.1);
+    }
   }
-}
-
-input[type="text"]:focus {
-  outline: none;
 }
 
 .select {
@@ -75,27 +98,27 @@ input[type="text"]:focus {
   .date,
   .filter,
   .input-btn {
-    transform: translateY(-1px); // weird styling fix
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(1rem, 1.5rem, 2rem);
     padding: 1em;
     color: $textcolor;
-    border: 0.5rem solid $bordercolor;
+    border: 0.25rem solid $bordercolor;
     border-top: none;
-    background-color: $inputcolor;
     transition: background-color 200ms ease-in;
-    cursor: pointer;
-  }
-
-  .filter,
-  .input-btn {
+    background: transparent;
     &:hover {
-      background-color: $hovercolor;
+      background: linear-gradient(
+        90deg,
+        rgba(241, 170, 76, 0) 0%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(241, 170, 76, 0) 100%
+      );
+      cursor: pointer;
     }
     &:focus {
       outline: none;
+      background: rgba(0, 0, 0, 0.1);
     }
-    cursor: pointer;
   }
 
   .date {
@@ -110,14 +133,17 @@ input[type="text"]:focus {
 
   .input-btn {
     flex-grow: 1;
-    border-radius: 0;
     border: none;
-    border-bottom: 0.5rem solid $bordercolor;
-    border-bottom: none;
-    background-color: transparent;
+    background: transparent;
+    i {
+      transition: transform 200ms ease-in;
+      &:hover {
+        transform: scale(2);
+      }
+    }
     &:hover {
-      transform: scale(2);
-      background-color: transparent;
+      background: transparent;
+      filter: none;
     }
   }
 }
@@ -126,7 +152,6 @@ input[type="text"]:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2vh;
 }
 
 .todoitems {
@@ -134,26 +159,27 @@ input[type="text"]:focus {
   display: flex;
   align-items: center;
   padding: 2rem;
-  border: 0.5rem solid $bordercolor;
-  border-top: none;
+  opacity: 1;
   background-color: $inputcolor;
-  &:first-child {
-    border-top: 0.5rem solid $bordercolor;
-    border-radius: 1em 1em 0 0;
-  }
+  background: linear-gradient(
+    90deg,
+    rgba(241, 170, 76, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(241, 170, 76, 0) 100%
+  );
   &:last-child {
-    border-radius: 0 0 1em 1em;
-    border-bottom: 0.5rem solid $bordercolor;
+    margin-bottom: 3rem;
   }
 
   .item-input {
     flex-grow: 1;
+    background: transparent;
     color: $textcolor;
-    background-color: transparent;
     border: none;
     font-size: 2rem;
   }
 
+  // Check Todos
   .completed {
     text-decoration: line-through;
     opacity: 0.5;
@@ -182,11 +208,13 @@ input[type="text"]:focus {
 
   .edit-todo {
     text-decoration: underline;
-    color: $inputcolor;
+    color: $errorcolor;
+    opacity: 1;
     &:focus {
       outline: none;
     }
   }
 }
 
+@import "./footer";
 @import "./media";

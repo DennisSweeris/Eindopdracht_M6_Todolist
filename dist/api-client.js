@@ -15,7 +15,7 @@ const getData = async () => {
 };
 
 // POST
-const postData = async data => {
+const postData = async (data) => {
   try {
     const response = await fetch(BASE_URL, {
       method: "POST",
@@ -31,7 +31,7 @@ const postData = async data => {
 };
 
 // DELETE
-const deleteData = async id => {
+const deleteData = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/${id}`, {
       method: "DELETE",
