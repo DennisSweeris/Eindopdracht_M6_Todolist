@@ -34,11 +34,13 @@ dateElement.innerHTML = today.toLocaleDateString("CET", options);
 async function returnInput() {
   if (inputField.value === "") {
     inputField.style.background = "rgb(180, 51, 51)";
+    inputField.placeholder = "Please type something";
   } else {
     inputField.style.background = "";
     let newItem = { description: inputField.value, done: false };
     createNewTodo(newItem);
     inputField.value = "";
+    inputField.placeholder = "New todo...";
 
     const newItemId = await postData(newItem);
     getItems(newItemId);
@@ -85,16 +87,6 @@ function createNewTodo(item) {
   window.scrollTo(0, document.querySelector(".body").scrollHeight);
 
   // EDIT TODOS
-  // TODODODODO
-  // function editDone() {
-  //   console.log("asdas");
-  // }
-
-  // editButton.addEventListener("click", editDone);
-  // editButton.addEventListener("keyup", (e) => {
-  //   if (e.key === "Enter") editDone;
-  // });
-
   editButton.addEventListener("click", () => {
     if ((newItem.disabled = newItem.disabled)) {
       todoItems.style.background = "rgba(180, 51,51,0.5)";

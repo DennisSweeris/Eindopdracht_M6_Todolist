@@ -50,6 +50,7 @@ body::-webkit-scrollbar {
 }
 
 h1 {
+  animation: appear 1s ease 0s 1 normal;
   margin: 2vh;
   font-size: 8rem;
   font-family: "Anton", sans-serif;
@@ -104,20 +105,12 @@ h1 {
     color: $textcolor;
     border: 0.25rem solid $bordercolor;
     border-top: none;
-    transition: background-color 200ms ease-in;
     background: transparent;
     &:hover {
-      background: linear-gradient(
-        90deg,
-        rgba(241, 170, 76, 0) 0%,
-        rgba(255, 255, 255, 1) 50%,
-        rgba(241, 170, 76, 0) 100%
-      );
       cursor: pointer;
     }
     &:focus {
       outline: none;
-      background: rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -134,16 +127,11 @@ h1 {
   .input-btn {
     flex-grow: 1;
     border: none;
-    background: transparent;
     i {
       transition: transform 200ms ease-in;
       &:hover {
         transform: scale(2);
       }
-    }
-    &:hover {
-      background: transparent;
-      filter: none;
     }
   }
 }
@@ -168,6 +156,7 @@ h1 {
     rgba(241, 170, 76, 0) 100%
   );
   &:last-child {
+    animation: appear 1s ease 0s 1 normal;
     margin-bottom: 3rem;
   }
 
@@ -213,6 +202,28 @@ h1 {
     &:focus {
       outline: none;
     }
+  }
+}
+
+// Animations
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
   }
 }
 

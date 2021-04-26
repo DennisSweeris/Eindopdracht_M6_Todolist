@@ -35,6 +35,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 h1 {
+  -webkit-animation: appear 1s ease 0s 1 normal;
+          animation: appear 1s ease 0s 1 normal;
   margin: 2vh;
   font-size: 8rem;
   font-family: "Anton", sans-serif;
@@ -90,20 +92,17 @@ h1 {
   color: #fc8f00;
   border: 0.25rem solid #000000;
   border-top: none;
-  transition: background-color 200ms ease-in;
   background: transparent;
 }
 .select .date:hover,
 .select .filter:hover,
 .select .input-btn:hover {
-  background: linear-gradient(90deg, rgba(241, 170, 76, 0) 0%, white 50%, rgba(241, 170, 76, 0) 100%);
   cursor: pointer;
 }
 .select .date:focus,
 .select .filter:focus,
 .select .input-btn:focus {
   outline: none;
-  background: rgba(0, 0, 0, 0.1);
 }
 .select .date {
   border-radius: 0 0 0 1rem;
@@ -116,17 +115,12 @@ h1 {
 .select .input-btn {
   flex-grow: 1;
   border: none;
-  background: transparent;
 }
 .select .input-btn i {
   transition: transform 200ms ease-in;
 }
 .select .input-btn i:hover {
   transform: scale(2);
-}
-.select .input-btn:hover {
-  background: transparent;
-  filter: none;
 }
 
 .todolist-wrapper {
@@ -145,6 +139,8 @@ h1 {
   background: linear-gradient(90deg, rgba(241, 170, 76, 0) 0%, white 50%, rgba(241, 170, 76, 0) 100%);
 }
 .todoitems:last-child {
+  -webkit-animation: appear 1s ease 0s 1 normal;
+          animation: appear 1s ease 0s 1 normal;
   margin-bottom: 3rem;
 }
 .todoitems .item-input {
@@ -191,6 +187,37 @@ h1 {
   outline: none;
 }
 
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
 footer {
   display: flex;
   justify-content: center;
@@ -227,6 +254,7 @@ footer i {
 
   .input-btn {
     order: 3;
+    width: 100%;
   }
 
   .select {
@@ -240,6 +268,8 @@ footer i {
 .select .date {
     width: 100%;
     border-radius: 0;
+    -moz-text-align-last: center;
+         text-align-last: center;
   }
 }
 @media screen and (max-width: 480px) {

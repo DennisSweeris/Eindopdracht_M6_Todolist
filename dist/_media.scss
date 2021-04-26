@@ -9,6 +9,7 @@ $bordercolor: #000000;
 
   .input-btn {
     order: 3;
+    width: 100%;
   }
 
   .select {
@@ -21,6 +22,7 @@ $bordercolor: #000000;
     .date {
       width: 100%;
       border-radius: 0;
+      text-align-last: center;
     }
   }
 }
@@ -40,6 +42,7 @@ $bordercolor: #000000;
   }
 }
 
+// 4k resolution
 @media screen and (min-width: 2560px) {
   html {
     font-size: 20px;
