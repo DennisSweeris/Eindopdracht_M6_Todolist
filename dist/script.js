@@ -86,34 +86,43 @@ function createNewTodo(item) {
 
   window.scrollTo(0, document.querySelector(".body").scrollHeight);
 
-  // EDIT TODOS
+  // EDIT Helpers
+  function editTodoActive() {
+    todoItems.style.background = "rgba(180, 51,51,0.5)";
+    todoItems.classList.remove("completed");
+    newItem.classList.remove("completed");
+    editButton.style.opacity = 0.25;
+    editButton.disabled = true;
+    checkbox.checked = false;
+  }
+
+  function editTodoRemove() {
+    todoItems.classList.remove("completed");
+    newItem.classList.remove("completed");
+    todoItems.style.background = "";
+    editButton.style.opacity = "";
+    editButton.disabled = false;
+  }
+
+  function postEdit(e) {
+    let newItemText = e.target.value;
+    let newItemEdit = { description: newItemText, done: false };
+    putData(item.id, newItemEdit);
+  }
+
   editButton.addEventListener("click", () => {
-    if ((newItem.disabled = newItem.disabled)) {
-      todoItems.style.background = "rgba(180, 51,51,0.5)";
-      todoItems.classList.remove("completed");
-      newItem.classList.remove("completed");
-      newItem.focus();
-      checkbox.checked = false;
-    }
+    if ((newItem.disabled = newItem.disabled)) editTodoActive();
+    if ((newItem.disabled = !newItem.disabled)) editTodoRemove();
 
-    if ((newItem.disabled = !newItem.disabled)) {
-      todoItems.classList.remove("completed");
-      newItem.classList.remove("completed");
-      todoItems.style.background = "";
-    }
-
-    newItem.classList.toggle("edit-todo");
     newItem.focus();
+    newItem.classList.toggle("edit-todo");
   });
 
   newItem.addEventListener("keydown", e => {
     if (e.code === "Enter") {
-      let newItemText = e.target.value;
-      let newItemEdit = { description: newItemText, done: false };
-      newItem.disabled = true;
-      newItem.classList.remove("edit-todo");
-      todoItems.style.background = "";
-      putData(item.id, newItemEdit);
+      if ((newItem.disabled = !newItem.disabled)) editTodoRemove();
+      newItem.classList.toggle("edit-todo");
+      postEdit(e);
     }
   });
 
