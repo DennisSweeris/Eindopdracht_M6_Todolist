@@ -9,7 +9,7 @@ const filterOption = document.querySelector(".filter");
 // EVENT LISTENERS
 filterOption.addEventListener("click", filterTodo);
 inputButton.addEventListener("click", returnInput);
-inputField.addEventListener("keydown", (e) => {
+inputField.addEventListener("keydown", e => {
   if (e.code === "Enter") returnInput();
 });
 
@@ -106,7 +106,7 @@ function createNewTodo(item) {
     newItem.focus();
   });
 
-  newItem.addEventListener("keydown", (e) => {
+  newItem.addEventListener("keydown", e => {
     if (e.code === "Enter") {
       let newItemText = e.target.value;
       let newItemEdit = { description: newItemText, done: false };
@@ -142,7 +142,7 @@ function createNewTodo(item) {
 // FILTER
 function filterTodo(input) {
   const todos = todoList.childNodes;
-  todos.forEach((todo) => {
+  todos.forEach(todo => {
     switch (input.target.value) {
       case "all":
         todo.style.display = "flex";
