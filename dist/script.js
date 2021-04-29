@@ -7,6 +7,7 @@ const todoList = document.querySelector(".todolist");
 const filterOption = document.querySelector(".filter");
 
 // EVENT LISTENERS
+window.addEventListener("load", () => getItems());
 filterOption.addEventListener("click", filterTodo);
 inputButton.addEventListener("click", returnInput);
 inputField.addEventListener("keydown", e => {
@@ -14,11 +15,10 @@ inputField.addEventListener("keydown", e => {
 });
 
 // LOAD TODOS
-window.addEventListener("load", () => getItems());
-const getItems = async () => {
+async function getItems() {
   data = await getData();
   data.map(createNewTodo);
-};
+}
 
 // SHOWS DATE
 const options = {
@@ -36,70 +36,79 @@ async function returnInput() {
     inputField.style.background = "rgb(180, 51, 51)";
     inputField.placeholder = "Please type something";
   } else {
-    inputField.style.background = "";
     let newItem = { description: inputField.value, done: false };
     createNewTodo(newItem);
+    inputField.style.background = "";
     inputField.value = "";
     inputField.placeholder = "New todo...";
-
     const newItemId = await postData(newItem);
-    getItems(newItemId);
+    todoList.appendChild(newItemId);
     todoList.innerHTML = "";
   }
 }
 
 // CREATE NEW TODO
 function createNewTodo(item) {
-  const todoItems = document.createElement("div");
-  todoItems.classList.add("todoitems");
-
+  // Create Elements
+  const todoItem = document.createElement("div");
   const checkbox = document.createElement("input");
+  const newItem = document.createElement("input");
+  const editButton = document.createElement("button");
+  const trashButton = document.createElement("button");
+
+  // Event Listeners
+  editButton.addEventListener("click", handleEditClick);
+  newItem.addEventListener("keydown", handleEditPressed);
+  trashButton.addEventListener("click", deleteTodo);
+  checkbox.addEventListener("change", handleCheckboxChange);
+
+  todoItem.classList.add("todoitem");
+
   checkbox.classList.add("checkbox");
   checkbox.type = "checkbox";
   checkbox.checked = false;
 
-  const newItem = document.createElement("input");
   newItem.classList.add("item-input");
   newItem.setAttribute("id", item.id);
   newItem.type = "text";
   newItem.value = `${item.description}`;
   newItem.disabled = true;
 
-  const editButton = document.createElement("button");
   editButton.classList.add("edit-btn");
   editButton.innerHTML = `<i class="fas fa-edit"></i>`;
 
-  const trashButton = document.createElement("button");
   trashButton.classList.add("trash-btn");
   trashButton.innerHTML = `<i class="fas fa-trash-alt"></i>`;
 
-  todoList.appendChild(todoItems);
-  todoItems.append(checkbox, newItem, editButton, trashButton);
-
-  trashButton.addEventListener("click", deleteTodo);
+  todoList.appendChild(todoItem);
+  todoItem.append(checkbox, newItem, editButton, trashButton);
 
   if (item.done) {
-    todoItems.classList.add("completed");
-    newItem.classList.add("completed");
+    toggleCompleted();
     checkbox.checked = true;
   }
 
   window.scrollTo(0, document.querySelector(".body").scrollHeight);
 
+  // HELPER Functions
+  // Completed / Checked Helper
+  function toggleCompleted() {
+    newItem.classList.toggle("completed");
+    todoItem.classList.toggle("completed");
+  }
+
   // EDIT Helpers
   function editTodoActive() {
-    todoItems.style.background = "rgba(180, 51,51,0.5)";
-    todoItems.classList.remove("completed");
-    newItem.classList.remove("completed");
+    todoItem.style.background = "rgba(180, 51,51,0.5)";
+    toggleCompleted();
     editButton.style.opacity = 0.25;
     editButton.disabled = true;
     checkbox.checked = false;
   }
 
   function editTodoRemove() {
-    todoItems.classList.remove("completed");
-    newItem.classList.remove("completed");
-    todoItems.style.background = "";
+    toggleCompleted();
+    todoItem.style.background = "";
     editButton.style.opacity = "";
     editButton.disabled = false;
   }
@@ -110,40 +119,39 @@ function createNewTodo(item) {
     putData(item.id, newItemEdit);
   }
 
-  editButton.addEventListener("click", () => {
+  function handleEditClick() {
     if ((newItem.disabled = newItem.disabled)) editTodoActive();
     if ((newItem.disabled = !newItem.disabled)) editTodoRemove();
 
     newItem.focus();
     newItem.classList.toggle("edit-todo");
-  });
+  }
 
-  newItem.addEventListener("keydown", e => {
+  function handleEditPressed(e) {
     if (e.code === "Enter") {
       if ((newItem.disabled = !newItem.disabled)) editTodoRemove();
       newItem.classList.toggle("edit-todo");
       postEdit(e);
+      inputField.focus();
     }
-  });
+  }
 
   // CHECK TODOS
-  checkbox.addEventListener("change", () => {
+  function handleCheckboxChange() {
     if (checkbox.checked === true) {
       let itemDone = { description: `${item.description}`, done: true };
-      newItem.classList.add("completed");
-      todoItems.classList.add("completed");
+      toggleCompleted();
       putData(item.id, itemDone);
     } else {
       let itemDone = { description: `${item.description}`, done: false };
-      newItem.classList.remove("completed");
-      todoItems.classList.remove("completed");
+      toggleCompleted();
       putData(item.id, itemDone);
     }
-  });
+  }
 
   // DELETE
   function deleteTodo() {
-    todoItems.remove();
+    todoItem.remove();
     deleteData(item.id);
   }
 }

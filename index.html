@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./dist/style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -23,21 +22,24 @@
       </h1>
     </header>
 
-    <div class="input-container">
-      <input class="input" type="text" placeholder="New todo..." />
-      <div class="select">
-        <div class="date"></div>
-        <button class="input-btn"><i class="fas fa-plus"></i></button>
-        <select name="todos" class="filter">
-          <option value="all">All</option>
-          <option value="completed">Completed</option>
-          <option value="uncompleted">Uncompleted</option>
-        </select>
+    <main>
+      <div class="input-container">
+        <input class="input" type="text" placeholder="New todo..." />
+        <div class="select">
+          <div class="date"></div>
+          <button class="input-btn"><i class="fas fa-plus"></i></button>
+          <select name="todos" class="filter">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="uncompleted">Uncompleted</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="todolist-wrapper">
-      <div class="todolist"></div>
-    </div>
+      <div class="todolist-wrapper">
+        <div class="todolist"></div>
+      </div>
+    </main>
+
     <footer>
       <ul>
         <li>

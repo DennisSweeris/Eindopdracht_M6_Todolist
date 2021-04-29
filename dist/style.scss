@@ -15,25 +15,29 @@ html {
 }
 
 // COLORS
-$backgroundcolor: #f1aa4c;
-$textcolor: #fc8f00;
-$inputcolor: #ffffff;
-$secondarycolor: #e4c651;
-$hovercolor: #ffd297;
-$bordercolor: #000000;
-$errorcolor: #b43333;
+$backgroundColor: #f1aa4c;
+$textColor: #fc8f00;
+$borderColor: #000000;
+$errorColor: #b43333;
+$gradientColorContent: linear-gradient(
+  90deg,
+  rgba(241, 170, 76, 1) 0%,
+  rgba(255, 255, 255, 1) 50%,
+  rgba(241, 170, 76, 1) 100%
+);
+$itemBackground: linear-gradient(
+  90deg,
+  rgba(241, 170, 76, 0) 0%,
+  rgba(255, 255, 255, 1) 50%,
+  rgba(241, 170, 76, 0) 100%
+);
 
 body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: $backgroundcolor;
-  background: linear-gradient(
-    90deg,
-    rgba(241, 170, 76, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(241, 170, 76, 1) 100%
-  );
+  background: $backgroundColor;
+  background: $gradientColorContent;
 }
 
 // Scrollbar
@@ -54,7 +58,7 @@ h1 {
   margin: 2vh;
   font-size: 8rem;
   font-family: "Anton", sans-serif;
-  color: $textcolor;
+  color: $textColor;
 }
 
 .input-container {
@@ -64,25 +68,19 @@ h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: $backgroundcolor;
-  background: linear-gradient(
-    90deg,
-    rgba(241, 170, 76, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(241, 170, 76, 1) 100%
-  );
-  z-index: 10;
+  background: $backgroundColor;
+  background: $gradientColorContent;
   input {
+    width: 45rem;
     background: none;
     font-size: 3em;
-    color: $textcolor;
-    width: 45rem;
+    color: $textColor;
     padding: 1em;
-    border: 0.25rem solid $bordercolor;
+    border: 0.25rem solid $borderColor;
     border-radius: 1rem 1rem 0 0;
     transition: background-color 200ms ease-in;
     &::placeholder {
-      color: $textcolor;
+      color: $textColor;
     }
     &:focus {
       outline: none;
@@ -102,8 +100,8 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(1rem, 1.5rem, 2rem);
     padding: 1em;
-    color: $textcolor;
-    border: 0.25rem solid $bordercolor;
+    color: $textColor;
+    border: 0.25rem solid $borderColor;
     border-top: none;
     background: transparent;
     &:hover {
@@ -117,6 +115,9 @@ h1 {
   .date {
     border-radius: 0 0 0 1rem;
     width: 40%;
+    &:hover {
+      cursor: default;
+    }
   }
 
   .filter {
@@ -142,19 +143,13 @@ h1 {
   align-items: center;
 }
 
-.todoitems {
+.todoitem {
   width: 40rem;
   display: flex;
   align-items: center;
   padding: 2rem;
   opacity: 1;
-  background-color: $inputcolor;
-  background: linear-gradient(
-    90deg,
-    rgba(241, 170, 76, 0) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(241, 170, 76, 0) 100%
-  );
+  background: $itemBackground;
   &:last-child {
     animation: appear 1s ease 0s 1 normal;
     margin-bottom: 3rem;
@@ -163,7 +158,7 @@ h1 {
   .item-input {
     flex-grow: 1;
     background: transparent;
-    color: $textcolor;
+    color: $textColor;
     border: none;
     font-size: 2rem;
   }
@@ -179,7 +174,7 @@ h1 {
   .trash-btn {
     font-size: 2rem;
     background: transparent;
-    color: $textcolor;
+    color: $textColor;
     border: none;
     margin-left: 1rem;
     cursor: pointer;
@@ -197,7 +192,7 @@ h1 {
 
   .edit-todo {
     text-decoration: underline;
-    color: $errorcolor;
+    color: $errorColor;
     opacity: 1;
     &:focus {
       outline: none;

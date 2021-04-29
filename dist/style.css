@@ -18,7 +18,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: #f1aa4c;
+  background: #f1aa4c;
   background: linear-gradient(90deg, #f1aa4c 0%, white 50%, #f1aa4c 100%);
 }
 
@@ -50,15 +50,14 @@ h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #f1aa4c;
+  background: #f1aa4c;
   background: linear-gradient(90deg, #f1aa4c 0%, white 50%, #f1aa4c 100%);
-  z-index: 10;
 }
 .input-container input {
+  width: 45rem;
   background: none;
   font-size: 3em;
   color: #fc8f00;
-  width: 45rem;
   padding: 1em;
   border: 0.25rem solid #000000;
   border-radius: 1rem 1rem 0 0;
@@ -108,6 +107,9 @@ h1 {
   border-radius: 0 0 0 1rem;
   width: 40%;
 }
+.select .date:hover {
+  cursor: default;
+}
 .select .filter {
   border-radius: 0 0 1rem 0;
   width: 40%;
@@ -129,34 +131,33 @@ h1 {
   align-items: center;
 }
 
-.todoitems {
+.todoitem {
   width: 40rem;
   display: flex;
   align-items: center;
   padding: 2rem;
   opacity: 1;
-  background-color: #ffffff;
   background: linear-gradient(90deg, rgba(241, 170, 76, 0) 0%, white 50%, rgba(241, 170, 76, 0) 100%);
 }
-.todoitems:last-child {
+.todoitem:last-child {
   -webkit-animation: appear 1s ease 0s 1 normal;
           animation: appear 1s ease 0s 1 normal;
   margin-bottom: 3rem;
 }
-.todoitems .item-input {
+.todoitem .item-input {
   flex-grow: 1;
   background: transparent;
   color: #fc8f00;
   border: none;
   font-size: 2rem;
 }
-.todoitems .completed {
+.todoitem .completed {
   text-decoration: line-through;
   opacity: 0.5;
 }
-.todoitems .checkbox,
-.todoitems .edit-btn,
-.todoitems .trash-btn {
+.todoitem .checkbox,
+.todoitem .edit-btn,
+.todoitem .trash-btn {
   font-size: 2rem;
   background: transparent;
   color: #fc8f00;
@@ -165,25 +166,25 @@ h1 {
   cursor: pointer;
   transition: transform 200ms ease-in;
 }
-.todoitems .checkbox:hover,
-.todoitems .edit-btn:hover,
-.todoitems .trash-btn:hover {
+.todoitem .checkbox:hover,
+.todoitem .edit-btn:hover,
+.todoitem .trash-btn:hover {
   transform: scale(1.5);
 }
-.todoitems .checkbox:focus,
-.todoitems .edit-btn:focus,
-.todoitems .trash-btn:focus {
+.todoitem .checkbox:focus,
+.todoitem .edit-btn:focus,
+.todoitem .trash-btn:focus {
   outline: none;
 }
-.todoitems .checkbox {
+.todoitem .checkbox {
   margin: 0 1rem 0 0;
 }
-.todoitems .edit-todo {
+.todoitem .edit-todo {
   text-decoration: underline;
   color: #b43333;
   opacity: 1;
 }
-.todoitems .edit-todo:focus {
+.todoitem .edit-todo:focus {
   outline: none;
 }
 
@@ -282,7 +283,7 @@ footer i {
     width: 80vw;
   }
 
-  .todoitems {
+  .todoitem {
     padding: 4rem;
   }
 }
