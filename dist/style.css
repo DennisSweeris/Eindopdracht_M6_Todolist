@@ -231,12 +231,14 @@ footer {
   background-color: #f1aa4c;
   background: linear-gradient(90deg, #f1aa4c 0%, white 50%, #f1aa4c 100%);
   z-index: 100;
+  padding: 0.5rem;
 }
 footer ul {
   display: flex;
+  list-style: none;
+  flex-grow: 1;
 }
 footer li {
-  list-style: none;
   transition: transform 300ms ease-in;
 }
 footer li:hover {
@@ -245,6 +247,13 @@ footer li:hover {
 footer i {
   margin: 0 1rem;
   transform: scale(1.5);
+}
+
+.footer-info {
+  display: flex;
+  width: 50%;
+  align-self: flex-end;
+  justify-self: flex-start;
 }
 
 @media screen and (max-width: 768px) {
